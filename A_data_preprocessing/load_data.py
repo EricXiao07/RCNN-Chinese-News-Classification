@@ -1,11 +1,7 @@
 
 """
 TNEWS 数据集读取模块
-
-负责：
-1. 读取 JSONL 格式的数据
-2. 检查数据字段
-3. 返回新闻记录列表
+支持读取有标签和无标签的数据。
 """
 
 import json
@@ -13,21 +9,12 @@ from pathlib import Path
 
 
 def load_jsonl(file_path):
-    """
-    读取 JSONL 文件。
+    """逐行读取 JSONL 文件。"""
 
-    每一行是一条独立的 JSON 新闻记录。
-
-    参数:
-        file_path: JSON 文件路径
-
-    返回:
-        data: 新闻记录列表
-    """
     file_path = Path(file_path)
 
     if not file_path.exists():
-        raise FileNotFoundError(f"找不到数据文件：{file_path}")
+        raise FileNotFoundError(f"找不到文件：{file_path}")
 
     data = []
 
@@ -41,7 +28,7 @@ def load_jsonl(file_path):
                 item = json.loads(line)
             except json.JSONDecodeError as e:
                 raise ValueError(
-                    f"第 {line_number} 行 JSON 格式错误：{e}"
+                    f"第 {line_number} 行格式错误：{e}"
                 )
 
             if not isinstance(item, dict):
@@ -59,34 +46,26 @@ def load_jsonl(file_path):
     return data
 
 
-def check_data(data):
-    """
-    检查数据基本情况。
-    """
-    print("=" * 40)
-    print("TNEWS 数据检查")
-    print("=" * 40)
+def check_data(data, dataset_name="数据集"):
+    """检查数据集基本情况。"""
 
+    print(f"\n===== {dataset_name} =====")
     print(f"数据总量：{len(data)}")
 
     if not data:
-        print("数据集为空！")
+        print("数据集为空")
         return
 
-    print("\n第一条数据：")
+    print("第一条数据：")
     print(json.dumps(data[0], ensure_ascii=False, indent=2))
 
-    print("\n字段名称：")
-    print(list(data[0].keys()))
-
     labeled_count = sum(
-        1 for item in data if item.get("label") is not None
+        1 for item in data if "label" in item
     )
 
-    print(f"\n有标签的数据：{labeled_count}")
+    print(f"有标签的数据：{labeled_count}")
     print(f"无标签的数据：{len(data) - labeled_count}")
 
 
 if __name__ == "__main__":
-    # 后续根据本地项目目录设置实际路径
-    print("TNEWS 数据读取模块已准备完成。")
+    print("TNEWS 数据读取模块已准备完成")
