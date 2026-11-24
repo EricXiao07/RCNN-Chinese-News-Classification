@@ -67,5 +67,20 @@ def check_data(data, dataset_name="数据集"):
     print(f"无标签的数据：{len(data) - labeled_count}")
 
 
+
 if __name__ == "__main__":
-    print("TNEWS 数据读取模块已准备完成")
+
+    # TNEWS 数据集路径
+    data_dir = "data/raw/TNEWS"
+
+    # 读取训练集
+    train_data = load_jsonl(f"{data_dir}/train.json")
+    check_data(train_data, "训练集")
+
+    # 读取验证集
+    dev_data = load_jsonl(f"{data_dir}/dev.json")
+    check_data(dev_data, "验证集")
+
+    # 读取测试集
+    test_data = load_jsonl(f"{data_dir}/test.json")
+    check_data(test_data, "测试集")
