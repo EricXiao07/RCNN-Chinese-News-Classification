@@ -1,0 +1,62 @@
+{
+  "0": {
+    "label": "100",
+    "label_desc": "news_story"
+  },
+  "1": {
+    "label": "101",
+    "label_desc": "news_culture"
+  },
+  "2": {
+    "label": "102",
+    "label_desc": "news_entertainment"
+  },
+  "3": {
+    "label": "103",
+    "label_desc": "news_sports"
+  },
+  "4": {
+    "label": "104",
+    "label_desc": "news_finance"
+  },
+  "5": {
+    "label": "106",
+    "label_desc": "news_house"
+  },
+  "6": {
+    "label": "107",
+    "label_desc": "news_car"
+  },
+  "7": {
+    "label": "108",
+    "label_desc": "news_edu"
+  },
+  "8": {
+    "label": "109",
+    "label_desc": "news_tech"
+  },
+  "9": {
+    "label": "110",
+    "label_desc": "news_military"
+  },
+  "10": {
+    "label": "112",
+    "label_desc": "news_travel"
+  },
+  "11": {
+    "label": "113",
+    "label_desc": "news_world"
+  },
+  "12": {
+    "label": "114",
+    "label_desc": "news_stock"
+  },
+  "13": {
+    "label": "115",
+    "label_desc": "news_agriculture"
+  },
+  "14": {
+    "label": "116",
+    "label_desc": "news_game"
+  }
+}
